@@ -8,7 +8,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="ManufaturerModule\" />
+    <Folder Include="EquipmentModule\" />
+    <Folder Include="CallModule\" />
   </ItemGroup>
 
 </Project>
