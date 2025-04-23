@@ -1,36 +1,36 @@
 ﻿namespace NewEquipmentManagement.ConsoleApp.BaseModule;
 
-internal abstract class BaseRepo
+public abstract class BaseRepo<T> where T : BaseEntity<T>
 {
-    public List<BaseEntity> Repository = new List<BaseEntity>();
+    public List<T> List = new List<T>();
 
-    public void AddEntity(BaseEntity entity)
+    public void Add(T entity)
     {
         entity.Id = GetNextAvailableId();
-        Repository.Add(entity);
+        List.Add(entity);
     }
 
-    public abstract void EditEntity();
-
-    public void RemoveEntity(BaseEntity entity)
+    public void Remove(T entity)
     {
-        Repository.Remove(entity);
+        List.Remove(entity);
     }
 
-    public bool TryFindEntity(int id, out BaseEntity? entity)
+    public abstract void Edit(int option, object value, T entity);
+
+    public abstract void ShowAll();
+
+    public bool TryFind(int id, out T? entity)
     {
-        entity = Repository.FirstOrDefault(targetEntity => targetEntity.Id == id);
+        entity = List.FirstOrDefault(targetEntity => targetEntity.Id == id);
         if (entity == null)
             return false;
         return true;
     }
 
-    public abstract void ShowAllEntities();
-
     public int GetNextAvailableId()
     {
         int id = 1;
-        List<int> usedIds = Repository.Select(baseEntity => baseEntity.Id).OrderBy(id => id).ToList();
+        List<int> usedIds = List.Select(baseEntity => baseEntity.Id).OrderBy(id => id).ToList();
         foreach (int usedId in usedIds)
         {
             if (usedId != id)

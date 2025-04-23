@@ -1,6 +1,6 @@
 ﻿namespace NewEquipmentManagement.ConsoleApp.BaseModule;
 
-internal class BaseEntity
+public class BaseEntity<T>
 {
     public int Id { get; set; }
 }
