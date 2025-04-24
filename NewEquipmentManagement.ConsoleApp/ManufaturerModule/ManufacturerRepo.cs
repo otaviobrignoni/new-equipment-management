@@ -26,13 +26,12 @@ public class ManufacturerRepo : BaseRepo<Manufacturer>, IRepository<Manufacturer
         const int nameWidth = 15;
         const int emailWidth = 18;
         const int phoneWidth = 13;
-        const int countWidth = 15;
+        const int countWidth = 16;
         int[] widths = { idWidth, nameWidth, emailWidth, phoneWidth, countWidth };
-        int fullWidth = widths.Sum() + widths.Length * 3 - 3;
+        int fullWidth = widths.Sum() + widths.Length * 3 - 5;
 
         Console.Clear();
         Utils.Header("All Manufacturers", fullWidth);
-        Console.WriteLine();
         Console.WriteLine(
             $"{{0, -{idWidth}}} │ {{1, -{nameWidth}}} │ {{2, -{emailWidth}}} │ {{3, -{phoneWidth}}} │ {{4, -{countWidth}}}",
             "ID", "Name", "Email", "Phone Number", "N° of Equipments");

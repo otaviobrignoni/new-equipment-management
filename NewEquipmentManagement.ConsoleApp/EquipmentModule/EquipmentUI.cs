@@ -15,7 +15,7 @@ public class EquipmentUI : BaseUI<Equipment>, IUserInterface<Equipment>
 
     public override void Show()
     {
-        bool backOptionSelected = false;
+        bool backOptionSelected = false;       
         Equipment equipment;
         while (!backOptionSelected)
         {
@@ -38,7 +38,11 @@ public class EquipmentUI : BaseUI<Equipment>, IUserInterface<Equipment>
                     }
                     else
                     {
-                        Repository.Add(NewEntity());
+                        equipment = NewEntity();
+                        Manufacturer manufacturer = equipment.Manufacturer;
+                        manufacturer.Equipments.AddWithoutID(equipment);
+                        Repository.Add(equipment);
+                        
                     }
                     break;
                 case 2:
@@ -50,13 +54,13 @@ public class EquipmentUI : BaseUI<Equipment>, IUserInterface<Equipment>
                     }
                     else
                     {
-                        while (!Repository.TryFind(GetValidId(), out equipment))
+                        while (!Repository.TryFind(GetValidId(), out equipment!))
                         {
                             Console.Clear();
                             Console.WriteLine("No valid equipment with that ID, try again.");
                             Utils.AnyKeyPrompt();
                         }
-                        EditEntityMenu(equipment);
+                        EditMenu(equipment);
                     }
                     break;
                 case 3:
@@ -68,7 +72,7 @@ public class EquipmentUI : BaseUI<Equipment>, IUserInterface<Equipment>
                     }
                     else
                     {
-                        while (!Repository.TryFind(GetValidId(), out equipment))
+                        while (!Repository.TryFind(GetValidId(), out equipment!))
                         {
                             Console.Clear();
                             Console.WriteLine("No valid equipment with that ID, try again.");
@@ -92,7 +96,7 @@ public class EquipmentUI : BaseUI<Equipment>, IUserInterface<Equipment>
         return new Equipment(GetValidName(), GetValidPrice(), GetValidManufacturer(), GetValidDate());
     }
 
-    public override void EditEntityMenu(Equipment equipment)
+    public override void EditMenu(Equipment equipment)
     {
         string title = $"Edit Equipment ID {equipment.Id}";
         bool backOptionSelected = false;
@@ -116,7 +120,10 @@ public class EquipmentUI : BaseUI<Equipment>, IUserInterface<Equipment>
                     Repository.Edit(2, GetValidPrice(), equipment);
                     break;
                 case 3:
-                    Repository.Edit(3, GetValidManufacturer(), equipment);
+                    Manufacturer manufacturer = equipment.Manufacturer;
+                    manufacturer.Equipments.Remove(equipment);
+                    Manufacturer newManufacturer = GetValidManufacturer();
+                    Repository.Edit(3, newManufacturer, equipment);
                     break;
                 case 4:
                     Repository.Edit(4, GetValidDate(), equipment);

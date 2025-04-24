@@ -39,13 +39,13 @@ public class ManufacturerUI : BaseUI<Manufacturer>, IUserInterface<Manufacturer>
                     }
                     else
                     {
-                        while (!Repository.TryFind(GetValidId(), out manufacturer))
+                        while (!Repository.TryFind(GetValidId(), out manufacturer!))
                         {
                             Console.Clear();
                             Console.WriteLine("No valid manufacturer with that ID, try again.");
                             Utils.AnyKeyPrompt();
                         }
-                        EditEntityMenu(manufacturer);
+                        EditMenu(manufacturer);
                     }
                     break;
                 case 3:
@@ -57,7 +57,7 @@ public class ManufacturerUI : BaseUI<Manufacturer>, IUserInterface<Manufacturer>
                     }
                     else
                     {
-                        while (!Repository.TryFind(GetValidId(), out manufacturer))
+                        while (!Repository.TryFind(GetValidId(), out manufacturer!))
                         {
                             Console.Clear();
                             Console.WriteLine("No valid manufacturer with that ID, try again.");
@@ -82,7 +82,7 @@ public class ManufacturerUI : BaseUI<Manufacturer>, IUserInterface<Manufacturer>
         return new Manufacturer(GetValidName(), GetValidEmail(), GetValidPhoneNumber());
     }
 
-    public override void EditEntityMenu(Manufacturer manufacturer)
+    public override void EditMenu(Manufacturer manufacturer)
     {
         string title = $"Edit Manufacturer ID {manufacturer.Id}";
         bool backOptionSelected = false;
@@ -118,11 +118,11 @@ public class ManufacturerUI : BaseUI<Manufacturer>, IUserInterface<Manufacturer>
     {
         Console.Clear();
         Console.Write("Enter a name for the manufacturer -> ");
-        string newName = Console.ReadLine().Trim();
+        string newName = Console.ReadLine()!.Trim();
         while (string.IsNullOrEmpty(newName))
         {
             Console.Write("Invalid name, try again -> ");
-            newName = Console.ReadLine().Trim();
+            newName = Console.ReadLine()!.Trim();
         }
         return newName;
     }
@@ -131,11 +131,11 @@ public class ManufacturerUI : BaseUI<Manufacturer>, IUserInterface<Manufacturer>
     {
         Console.Clear();
         Console.Write("Enter an email for the manufacturer -> ");
-        string newName = Console.ReadLine().Trim();
+        string newName = Console.ReadLine()!.Trim();
         while (string.IsNullOrEmpty(newName) || !Regex.IsMatch(newName, @"^[\w\.-]+@[\w\.-]+(\.\w{2,})?$"))
         {
             Console.Write("Invalid email, try again -> ");
-            newName = Console.ReadLine().Trim();
+            newName = Console.ReadLine()!.Trim();
         }
         return newName;
     }
@@ -144,11 +144,11 @@ public class ManufacturerUI : BaseUI<Manufacturer>, IUserInterface<Manufacturer>
     {
         Console.Clear();
         Console.Write("Enter a phone number for the manufacturer -> ");
-        string newPhoneNumber = Console.ReadLine().Trim();
+        string newPhoneNumber = Console.ReadLine()!.Trim();
         while (string.IsNullOrEmpty(newPhoneNumber) || !Regex.IsMatch(newPhoneNumber, @"^\(?\d{2}\)?\s?(9?\d{4})[-\s]?\d{4}$"))
         {
             Console.Write("Invalid phone number, try again -> ");
-            newPhoneNumber = Console.ReadLine().Trim();
+            newPhoneNumber = Console.ReadLine()!.Trim();
         }
         return newPhoneNumber;
     }

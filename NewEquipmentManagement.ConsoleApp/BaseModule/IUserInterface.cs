@@ -4,6 +4,6 @@ public interface IUserInterface<T> where T : BaseEntity<T>
 {
     void Show();
     T NewEntity();
-    void EditEntityMenu(T entity);
+    void EditMenu(T entity);
     int GetValidId();
 }

@@ -2,14 +2,15 @@
 
 public abstract class BaseUI<T> where T : BaseEntity<T>
 {
-    public BaseRepo<T> Repository;
+    public BaseRepo<T> Repository {  get; set; }
+
     public string Title { get; set; }
 
     public abstract void Show();
 
     public abstract T NewEntity();
 
-    public abstract void EditEntityMenu(T entity);
+    public abstract void EditMenu(T entity);
 
     public int GetValidId()
     {

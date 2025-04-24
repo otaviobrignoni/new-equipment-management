@@ -5,6 +5,10 @@ using NewEquipmentManagement.ConsoleApp.Shared;
 namespace NewEquipmentManagement.ConsoleApp.EquipmentModule;
 public class EquipmentRepo : BaseRepo<Equipment>, IRepository<Equipment>
 {
+    public void AddWithoutID(Equipment equipment)
+    {
+        List.Add(equipment);
+    }
     public override void Edit(int option, object value, Equipment equipment)
     {
         switch (option)
@@ -32,12 +36,11 @@ public class EquipmentRepo : BaseRepo<Equipment>, IRepository<Equipment>
         const int priceWidth = 12;
         const int dateWidth = 10;
         int[] widths = { idWidth, nameWidth, nameWidth, snWidth, priceWidth, dateWidth };
-        int fullWidth = widths.Sum() + widths.Length * 3 - 3;
+        int fullWidth = widths.Sum() + widths.Length * 3 - 5;
 
 
         Console.Clear();
         Utils.Header("All Equipments", fullWidth);
-        Console.WriteLine();
         Console.WriteLine(
             $"{{0, -{idWidth}}} │ {{1, -{nameWidth}}} │ {{2, -{snWidth}}} │ {{3, -{nameWidth}}} │ {{4, -{priceWidth}}} │ {{5, -{dateWidth}}}",
             "ID", "Name", "S/N", "Manufacturer", "Price", "Built on");

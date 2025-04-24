@@ -1,4 +1,5 @@
-﻿using NewEquipmentManagement.ConsoleApp.EquipmentModule;
+﻿using NewEquipmentManagement.ConsoleApp.CallModule;
+using NewEquipmentManagement.ConsoleApp.EquipmentModule;
 using NewEquipmentManagement.ConsoleApp.ManufaturerModule;
 
 namespace NewEquipmentManagement.ConsoleApp.Shared;
@@ -7,6 +8,7 @@ public class MainMenu
 
     public static ManufacturerUI manufacturerUI = new ManufacturerUI();
     public static EquipmentUI equipmentUI = new EquipmentUI(manufacturerUI);
+    public static CallUI callUI = new CallUI(equipmentUI);
 
     public static void Show()
     {
@@ -30,7 +32,7 @@ public class MainMenu
                     equipmentUI.Show();
                     break;
                 case 3:
-                    //CallInterface.Show();
+                    callUI.Show();
                     break;
                 case 4:
                     Console.Clear();
