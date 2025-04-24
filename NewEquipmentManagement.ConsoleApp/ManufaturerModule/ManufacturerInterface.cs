@@ -3,13 +3,11 @@ using NewEquipmentManagement.ConsoleApp.Shared;
 using System.Text.RegularExpressions;
 
 namespace NewEquipmentManagement.ConsoleApp.ManufaturerModule;
-public class ManufacturerInterface : BaseInterface<Manufacturer>
+public class ManufacturerInterface : BaseInterface<Manufacturer>, IInterface<Manufacturer>
 {
-    public ManufacturerRepo Repository { get; set; }
-
-    public ManufacturerInterface(ManufacturerRepo repository)
+    public ManufacturerInterface()
     {
-        Repository = repository;
+        Repository = new ManufacturerRepo();
         Title = "Manage Manufacturers";
     }
 

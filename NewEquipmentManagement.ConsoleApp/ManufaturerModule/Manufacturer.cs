@@ -14,4 +14,9 @@ public class Manufacturer : BaseEntity<Manufacturer>
         Email = email;
         PhoneNumber = phoneNumber;
     }
+    
+    public int GetEquipmentsNumber()
+    {
+        return 1;
+    }
 }
