@@ -1,11 +1,12 @@
-﻿using NewEquipmentManagement.ConsoleApp.ManufaturerModule;
+﻿using NewEquipmentManagement.ConsoleApp.EquipmentModule;
+using NewEquipmentManagement.ConsoleApp.ManufaturerModule;
 
 namespace NewEquipmentManagement.ConsoleApp.Shared;
 public class MainMenu
 {
 
-    public static ManufacturerInterface ManufacturerInterface = new ManufacturerInterface();
-
+    public static ManufacturerUI manufacturerUI = new ManufacturerUI();
+    public static EquipmentUI equipmentUI = new EquipmentUI(manufacturerUI);
 
     public static void Show()
     {
@@ -23,10 +24,10 @@ public class MainMenu
             switch (Utils.GetValidOption(1, 4))
             {
                 case 1:
-                    ManufacturerInterface.Show();
+                    manufacturerUI.Show();
                     break;
                 case 2:
-                    //EquipmentInterface.Show();
+                    equipmentUI.Show();
                     break;
                 case 3:
                     //CallInterface.Show();

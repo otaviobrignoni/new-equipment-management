@@ -3,9 +3,9 @@ using NewEquipmentManagement.ConsoleApp.Shared;
 using System.Text.RegularExpressions;
 
 namespace NewEquipmentManagement.ConsoleApp.ManufaturerModule;
-public class ManufacturerInterface : BaseInterface<Manufacturer>, IInterface<Manufacturer>
+public class ManufacturerUI : BaseUI<Manufacturer>, IUserInterface<Manufacturer>
 {
-    public ManufacturerInterface()
+    public ManufacturerUI()
     {
         Repository = new ManufacturerRepo();
         Title = "Manage Manufacturers";

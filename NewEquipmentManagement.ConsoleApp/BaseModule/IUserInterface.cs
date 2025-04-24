@@ -1,6 +1,6 @@
 ﻿namespace NewEquipmentManagement.ConsoleApp.BaseModule;
 
-public interface IInterface<T> where T : BaseEntity<T>
+public interface IUserInterface<T> where T : BaseEntity<T>
 {
     void Show();
     T NewEntity();

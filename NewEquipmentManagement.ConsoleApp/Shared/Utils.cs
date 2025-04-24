@@ -28,4 +28,11 @@ internal class Utils
         Console.WriteLine("│" + title.PadLeft(padding + title.Length).PadRight(MenuWidth) + "│");
         Console.WriteLine("└" + new string('─', MenuWidth) + "┘");
     }
+    public static void Header(string title, int customWidth)
+    {
+        int padding = (customWidth - title.Length) / 2;
+        Console.WriteLine("┌" + new string('─', customWidth) + "┐");
+        Console.WriteLine("│" + title.PadLeft(padding + title.Length).PadRight(customWidth) + "│");
+        Console.WriteLine("└" + new string('─', customWidth) + "┘");
+    }
 }

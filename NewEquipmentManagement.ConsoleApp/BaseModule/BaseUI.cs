@@ -1,6 +1,6 @@
 ﻿namespace NewEquipmentManagement.ConsoleApp.BaseModule;
 
-public abstract class BaseInterface<T> where T : BaseEntity<T>
+public abstract class BaseUI<T> where T : BaseEntity<T>
 {
     public BaseRepo<T> Repository;
     public string Title { get; set; }

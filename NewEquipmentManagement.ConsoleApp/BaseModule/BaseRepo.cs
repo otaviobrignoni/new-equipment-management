@@ -39,4 +39,9 @@ public abstract class BaseRepo<T> where T : BaseEntity<T>
         }
         return id;
     }
+
+    public int Count()
+    {
+        return List.Count;
+    }
 }
