@@ -15,11 +15,6 @@ public class EquipmentRepoDisk : BaseRepoDisk<Equipment>, IEquipmentRepo
         return Context.Equipments;
     }
 
-    public void AddWithoutID(Equipment equipment)
-    {
-        List.Add(equipment);
-        Context.SaveData();
-    }
     public override void Edit(int option, object value, Equipment equipment)
     {
         switch (option)
