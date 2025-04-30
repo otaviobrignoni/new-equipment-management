@@ -4,7 +4,7 @@ using NewEquipmentManagement.ConsoleApp.Shared;
 
 namespace NewEquipmentManagement.ConsoleApp.CallModule;
 
-public class CallRepo : BaseRepo<Call>, IRepository<Call>
+public class CallRepoMemory : BaseRepoMemory<Call>, ICallRepo
 {
     public override void Edit(int option, object value, Call call)
     {

@@ -6,11 +6,9 @@ namespace NewEquipmentManagement.ConsoleApp.EquipmentModule;
 public class EquipmentUI : BaseUI<Equipment>, IUserInterface<Equipment>
 {
     private ManufacturerUI MnfUI;
-    public EquipmentUI(ManufacturerUI UI)
+    public EquipmentUI(ManufacturerUI UI, IEquipmentRepo equipmentRepo) : base(equipmentRepo, "Manage Equipments")
     {
-        Repository = new EquipmentRepo();
         MnfUI = UI;
-        Title = "Manage Equipments";
     }
 
     public override void Show()
@@ -40,7 +38,9 @@ public class EquipmentUI : BaseUI<Equipment>, IUserInterface<Equipment>
                     {
                         equipment = NewEntity();
                         Manufacturer manufacturer = equipment.Manufacturer;
-                        manufacturer.Equipments.AddWithoutID(equipment);
+                        //if (manufacturer.Equipments == null)                       
+                        //    manufacturer.Equipments = new List<Equipment>();
+                        manufacturer.Equipments.Add(equipment);
                         Repository.Add(equipment);
                         
                     }

@@ -2,8 +2,17 @@
 using NewEquipmentManagement.ConsoleApp.Shared;
 
 namespace NewEquipmentManagement.ConsoleApp.ManufaturerModule;
-public class ManufacturerRepo : BaseRepo<Manufacturer>, IRepository<Manufacturer>
+public class ManufacturerRepoDisk : BaseRepoDisk<Manufacturer>, IManufacturerRepo
 {
+
+    public ManufacturerRepoDisk(DataContext context) : base(context)
+    {
+    }
+
+    protected override List<Manufacturer> GetList()
+    {
+        return Context.Manufacturers;
+    }
     public override void Edit(int option, object value, Manufacturer manufacturer)
     {
         switch (option)
@@ -18,6 +27,7 @@ public class ManufacturerRepo : BaseRepo<Manufacturer>, IRepository<Manufacturer
                 manufacturer.PhoneNumber = (string)value;
                 break;
         }
+        Context.SaveData();
     }
 
     public override void ShowAll()

@@ -9,6 +9,10 @@ public class Call : BaseEntity<Call>
     public Equipment Equipment { get; set; }
     public DateTime OpeningDate { get; set; }
 
+    public Call()
+    {
+    }
+
     public Call(string title, string description, Equipment equipment)
     {
         Title = title;

@@ -5,10 +5,9 @@ using System.Text.RegularExpressions;
 namespace NewEquipmentManagement.ConsoleApp.ManufaturerModule;
 public class ManufacturerUI : BaseUI<Manufacturer>, IUserInterface<Manufacturer>
 {
-    public ManufacturerUI()
+
+    public ManufacturerUI(IManufacturerRepo manufacturerRepo) : base(manufacturerRepo, "Manage Manufacturers")
     {
-        Repository = new ManufacturerRepo();
-        Title = "Manage Manufacturers";
     }
 
     public override void Show()
@@ -31,7 +30,7 @@ public class ManufacturerUI : BaseUI<Manufacturer>, IUserInterface<Manufacturer>
                     Repository.Add(NewEntity());
                     break;
                 case 2:
-                    if (Repository.List.Count == 0)
+                    if (Repository.Count() == 0)
                     {
                         Console.Clear();
                         Console.WriteLine("There are no listed manufacturers.");
@@ -49,7 +48,7 @@ public class ManufacturerUI : BaseUI<Manufacturer>, IUserInterface<Manufacturer>
                     }
                     break;
                 case 3:
-                    if (Repository.List.Count == 0)
+                    if (Repository.Count() == 0)
                     {
                         Console.Clear();
                         Console.WriteLine("There are no listed manufacturers.");

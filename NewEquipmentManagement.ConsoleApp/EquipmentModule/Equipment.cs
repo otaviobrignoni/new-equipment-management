@@ -4,10 +4,14 @@ using NewEquipmentManagement.ConsoleApp.ManufaturerModule;
 namespace NewEquipmentManagement.ConsoleApp.EquipmentModule;
 public class Equipment : BaseEntity<Equipment>
 {
-    public string Name;
-    public decimal Price;
-    public Manufacturer Manufacturer;
-    public DateTime ManufacturingDate;
+    public string Name { get; set; }
+    public decimal Price { get; set; }
+    public Manufacturer Manufacturer { get; set; }
+    public DateTime ManufacturingDate { get; set; }
+
+    public Equipment()
+    {
+    }
 
     public Equipment(string name, decimal price, Manufacturer manufacturer, DateTime manufacturingDate)
     {

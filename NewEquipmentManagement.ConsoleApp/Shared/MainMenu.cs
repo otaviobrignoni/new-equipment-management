@@ -1,14 +1,20 @@
-﻿using NewEquipmentManagement.ConsoleApp.CallModule;
+﻿using NewEquipmentManagement.ConsoleApp.BaseModule;
+using NewEquipmentManagement.ConsoleApp.CallModule;
 using NewEquipmentManagement.ConsoleApp.EquipmentModule;
 using NewEquipmentManagement.ConsoleApp.ManufaturerModule;
 
 namespace NewEquipmentManagement.ConsoleApp.Shared;
 public class MainMenu
 {
+    public static DataContext Context = new DataContext(true);
 
-    public static ManufacturerUI manufacturerUI = new ManufacturerUI();
-    public static EquipmentUI equipmentUI = new EquipmentUI(manufacturerUI);
-    public static CallUI callUI = new CallUI(equipmentUI);
+    public static ManufacturerRepoDisk manufacturerRepo = new ManufacturerRepoDisk(Context);
+    public static EquipmentRepoDisk equipmentRepo = new EquipmentRepoDisk(Context);
+    public static CallRepoDisk callRepo = new CallRepoDisk(Context);
+
+    public static ManufacturerUI manufacturerUI = new ManufacturerUI(manufacturerRepo);
+    public static EquipmentUI equipmentUI = new EquipmentUI(manufacturerUI, equipmentRepo);
+    public static CallUI callUI = new CallUI(equipmentUI, callRepo);
 
     public static void Show()
     {

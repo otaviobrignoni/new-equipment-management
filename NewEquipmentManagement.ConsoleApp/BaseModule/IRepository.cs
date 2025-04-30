@@ -8,4 +8,5 @@ public interface IRepository<T> where T : BaseEntity<T>
     void ShowAll();
     bool TryFind(int id, out T? entity);
     int GetNextAvailableId();
+    int Count();
 }

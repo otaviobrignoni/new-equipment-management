@@ -3,11 +3,22 @@ using NewEquipmentManagement.ConsoleApp.ManufaturerModule;
 using NewEquipmentManagement.ConsoleApp.Shared;
 
 namespace NewEquipmentManagement.ConsoleApp.EquipmentModule;
-public class EquipmentRepo : BaseRepo<Equipment>, IRepository<Equipment>
+public class EquipmentRepoDisk : BaseRepoDisk<Equipment>, IEquipmentRepo
 {
+
+    public EquipmentRepoDisk(DataContext context) : base(context)
+    {
+    }
+
+    protected override List<Equipment> GetList()
+    {
+        return Context.Equipments;
+    }
+
     public void AddWithoutID(Equipment equipment)
     {
         List.Add(equipment);
+        Context.SaveData();
     }
     public override void Edit(int option, object value, Equipment equipment)
     {
@@ -26,6 +37,7 @@ public class EquipmentRepo : BaseRepo<Equipment>, IRepository<Equipment>
                     equipment.ManufacturingDate = (DateTime)value;
                 break;
         }
+        Context.SaveData();
     }
 
     public override void ShowAll()

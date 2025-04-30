@@ -7,11 +7,9 @@ public class CallUI : BaseUI<Call>, IUserInterface<Call>
 {
     private EquipmentUI EquipUI;
 
-    public CallUI(EquipmentUI UI)
+    public CallUI(EquipmentUI UI, ICallRepo callRepo) : base(callRepo, "Manage Calls")
     {
-        Repository = new CallRepo();
         EquipUI = UI;
-        Title = "Manage Calls";
     }
 
     public override void Show()

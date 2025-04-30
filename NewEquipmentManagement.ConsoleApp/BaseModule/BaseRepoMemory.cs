@@ -1,6 +1,6 @@
 ﻿namespace NewEquipmentManagement.ConsoleApp.BaseModule;
 
-public abstract class BaseRepo<T> where T : BaseEntity<T>
+public abstract class BaseRepoMemory<T> where T : BaseEntity<T>
 {
     public List<T> List = new List<T>();
 
