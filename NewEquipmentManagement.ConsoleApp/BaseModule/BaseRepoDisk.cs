@@ -14,8 +14,7 @@ public abstract class BaseRepoDisk<T> where T : BaseEntity<T>
     }
 
     protected abstract List<T> GetList();
-    
-
+  
     public void Add(T entity)
     {
         entity.Id = GetNextAvailableId();

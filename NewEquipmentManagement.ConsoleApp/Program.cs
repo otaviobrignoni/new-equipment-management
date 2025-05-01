@@ -4,7 +4,6 @@ namespace NewEquipmentManagement.ConsoleApp;
 
 class Program
 {
-    //test
     static void Main(string[] args)
     {
         MainMenu.Show();

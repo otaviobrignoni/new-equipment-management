@@ -1,8 +1,8 @@
 ﻿namespace NewEquipmentManagement.ConsoleApp.Shared;
 
-internal class Utils
+public class Utils
 {
-    public const int MenuWidth = 38;
+    const int MenuWidth = 38;
 
     public static void AnyKeyPrompt()
     {

@@ -2,16 +2,15 @@
 
 public abstract class BaseUI<T> where T : BaseEntity<T>
 {
+    public IRepository<T> Repository {  get; set; }
+
+    public string Title { get; set; }
 
     public BaseUI(IRepository<T> repository, string title)
     {
         Repository = repository;
         Title = title;
     }
-
-    public IRepository<T> Repository {  get; set; }
-
-    public string Title { get; set; }
 
     public abstract void Show();
 

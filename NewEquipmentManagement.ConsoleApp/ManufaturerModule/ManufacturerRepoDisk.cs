@@ -38,20 +38,20 @@ public class ManufacturerRepoDisk : BaseRepoDisk<Manufacturer>, IManufacturerRep
         const int phoneWidth = 13;
         const int countWidth = 16;
         int[] widths = { idWidth, nameWidth, emailWidth, phoneWidth, countWidth };
-        int fullWidth = widths.Sum() + widths.Length * 3 - 5;
+        int fullWidth = widths.Sum() + widths.Length * 3 - 3;
 
         Console.Clear();
         Utils.Header("All Manufacturers", fullWidth);
         Console.WriteLine(
-            $"{{0, -{idWidth}}} │ {{1, -{nameWidth}}} │ {{2, -{emailWidth}}} │ {{3, -{phoneWidth}}} │ {{4, -{countWidth}}}",
+            $" {{0, -{idWidth}}} │ {{1, -{nameWidth}}} │ {{2, -{emailWidth}}} │ {{3, -{phoneWidth}}} │ {{4, -{countWidth}}}",
             "ID", "Name", "Email", "Phone Number", "N° of Equipments");
         Console.WriteLine(
-            "{0}─┼─{1}─┼─{2}─┼─{3}─┼─{4}",
+            " {0}─┼─{1}─┼─{2}─┼─{3}─┼─{4}",
             new string('─', idWidth), new string('─', nameWidth), new string('─', emailWidth), new string('─', phoneWidth), new string('─', countWidth));
         foreach (Manufacturer manufacturer in List)
         {
             Console.WriteLine(
-                $"{{0, -{idWidth}}} │ {{1, -{nameWidth}}} │ {{2, -{emailWidth}}} │ {{3, -{phoneWidth}}} │ {{4, -{countWidth}}}",
+                $" {{0, -{idWidth}}} │ {{1, -{nameWidth}}} │ {{2, -{emailWidth}}} │ {{3, -{phoneWidth}}} │ {{4, -{countWidth}}}",
                 manufacturer.Id, manufacturer.Name, manufacturer.Email, manufacturer.PhoneNumber, manufacturer.GetEquipmentsNumber());
         }
     }

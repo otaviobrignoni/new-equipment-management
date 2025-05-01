@@ -83,13 +83,12 @@ public class ManufacturerUI : BaseUI<Manufacturer>, IUserInterface<Manufacturer>
 
     public override void EditMenu(Manufacturer manufacturer)
     {
-        string title = $"Edit Manufacturer ID {manufacturer.Id}";
         bool backOptionSelected = false;
 
         while (!backOptionSelected)
         {
             Console.Clear();
-            Utils.Header(title);
+            Utils.Header($"Edit Manufacturer ID {manufacturer.Id}");
             Console.WriteLine();
             Console.WriteLine("1 - Edit Name");
             Console.WriteLine("2 - Edit Email");
@@ -131,7 +130,7 @@ public class ManufacturerUI : BaseUI<Manufacturer>, IUserInterface<Manufacturer>
         Console.Clear();
         Console.Write("Enter an email for the manufacturer -> ");
         string newName = Console.ReadLine()!.Trim();
-        while (string.IsNullOrEmpty(newName) || !Regex.IsMatch(newName, @"^[\w\.-]+@[\w\.-]+(\.\w{2,})?$"))
+        while (string.IsNullOrEmpty(newName) || !Regex.IsMatch(newName, @"^[\w\.-]+@[\w\.-]+(\.\w{2,})$"))
         {
             Console.Write("Invalid email, try again -> ");
             newName = Console.ReadLine()!.Trim();
